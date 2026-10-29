@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
 app = FastAPI()
 
 image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0alz_4QfS7tx0wsk8YEeV9r2G4XYdX-ys1p4z7IXC4A&s=10"
@@ -11,6 +12,8 @@ def get_users():
     return {"users": ["Alice", "Bob", "Charlie"],
             "Role":["Admin", "Employee", "Guest"]}
 
-@app.get("/image")
+@app.get("/image", response_class=HTMLResponse)
 def get_image():
-    return{"image_url": image}
+    return f"""
+<img src="{image}" alt="Image"> """
+# {"image_url": image}
