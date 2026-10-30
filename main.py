@@ -9,11 +9,15 @@ def home():
     return{"message":"Hello from FastAPI on Render!"}
 @app.get("/users")
 def get_users():
-    return {"users": ["Alice", "Bob", "Charlie"],
+    return {"users":["Alice", "Bob", "Charlie"],
             "Role":["Admin", "Employee", "Guest"]}
+
+@app.get("/contact")
+def contact():
+    return{"message":"Contact Page"}
 
 @app.get("/image", response_class=HTMLResponse)
 def get_image():
     return f"""
-<img src="{image}" alt="Image"> """
+<img src="{image}" alt="Image" width="500"> """
 # {"image_url": image}
